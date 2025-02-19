@@ -1,0 +1,3 @@
+Info:  guide_scan_input 5 (Line: 83)  synopsys_auto_setup is false, ignoring Scan Input guidance.
+Info:  SVF Operation 5 (Line: 83) - scan_input.  Status: rejected
+

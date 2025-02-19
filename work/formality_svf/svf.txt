@@ -1,0 +1,96 @@
+
+
+##################################################################################
+# © 2002-2021 Synopsys, Inc. This Synopsys product and all associated
+# documentation and files are proprietary to Synopsys, Inc. and may only be
+# used pursuant to the terms and conditions of a written license agreement with
+# Synopsys, Inc. All other use, reproduction, modification, or distribution of
+# the Synopsys product or the associated documentation or files is strictly
+# prohibited.
+##################################################################################
+
+
+
+guide
+
+## Operation Id: 1
+guide_environment \
+  { { dc_product_version L-2016.03-SP5-5 } \
+    { dc_product_build_date { Apr 21, 2017 } } \
+    { bus_dimension_separator_style ][ } \
+    { bus_extraction_style %s\[%d:%d\] } \
+    { bus_multiple_separator_style , } \
+    { bus_naming_style %s[%d] } \
+    { bus_range_separator_style : } \
+    { dc_allow_rtl_pg false } \
+    { hdlin_allow_4state_parameters TRUE } \
+    { hdlin_enable_hier_naming FALSE } \
+    { hdlin_enable_upf_compatible_naming FALSE } \
+    { hdlin_generate_naming_style %s_%d } \
+    { hdlin_generate_separator_style _ } \
+    { hdlin_infer_enumerated_types FALSE } \
+    { hdlin_optimize_enum_types FALSE } \
+    { hdlin_preserve_sequential none } \
+    { hdlin_sverilog_std 2012 } \
+    { hdlin_sv_packages enable } \
+    { hdlin_sv_union_member_naming FALSE } \
+    { hdlin_vhdl_std 2008 } \
+    { hdlin_vrlg_std 2005 } \
+    { hdlin_while_loop_iterations 4096 } \
+    { link_portname_allow_period_to_match_underscore false } \
+    { link_portname_allow_square_bracket_to_match_underscore false } \
+    { port_complement_naming_style %s_BAR } \
+    { simplified_verification_mode FALSE } \
+    { template_naming_style %s_%p } \
+    { template_parameter_style %s%d } \
+    { template_separator_style _ } \
+    { upf_iso_filter_elements_with_applies_to ENABLE } \
+    { upf_isols_allow_instances_in_elements true } \
+    { link_library { * ../ref/db_nldm/saed14rvt_tt0p8v25c.db  } } \
+    { target_library ../ref/db_nldm/saed14rvt_tt0p8v25c.db } \
+    { search_path { . /remote/apps/synopsys/dc/L-2016.03-SP5-5/libraries/syn /remote/apps/synopsys/dc/L-2016.03-SP5-5/minpower/syn /remote/apps/synopsys/dc/L-2016.03-SP5-5/dw/syn_ver /remote/apps/synopsys/dc/L-2016.03-SP5-5/dw/sim_ver } } \
+    { synopsys_root /remote/apps/synopsys/dc/L-2016.03-SP5-5 } \
+    { cwd /VIM/Courses/synopsys_df/snps_design_flow_tutorial/lab02_design_compiler/work } \
+    { read_verilog ../source/johnson.v } \
+    { current_design johnson } } 
+
+## Operation Id: 2
+guide_change_names \
+  -design { johnson } \
+  { { cell out_reg[7] out_reg_7_ } \
+    { cell out_reg[0] out_reg_0_ } \
+    { cell out_reg[1] out_reg_1_ } \
+    { cell out_reg[2] out_reg_2_ } \
+    { cell out_reg[3] out_reg_3_ } \
+    { cell out_reg[4] out_reg_4_ } \
+    { cell out_reg[5] out_reg_5_ } \
+    { cell out_reg[6] out_reg_6_ } } 
+
+## Operation Id: 3
+guide_environment \
+  { { write_file { -format verilog -hierarchy -output ../results/johnson_compiled.v } } \
+    { write_file { -format ddc -hierarchy -output ../results/johnson_compiled.ddc } } \
+    { current_design johnson } \
+    { target_library ../ref/db_nldm/saed14rvt_tt0p8v25c.db } \
+    { link_library { * ../ref/db_nldm/saed14rvt_tt0p8v25c.db  } } \
+    { read_verilog ../source/johnson_dft.v } \
+    { current_design johnson } } 
+
+## Operation Id: 4
+guide_environment \
+  { { current_design johnson } } 
+
+## Operation Id: 5
+guide_scan_input \
+  -design { johnson } \
+  -disable_value 0 \
+  -ports { SE } 
+
+## Operation Id: 6
+guide_environment \
+  { { write_file { -format ddc -hierarchy -output ../results/johnson_dft_compiled.ddc } } \
+    { write_file { -format verilog -hierarchy -output ../results/johnson_dft_compiled.v } } \
+    { current_design johnson } } 
+
+setup
+

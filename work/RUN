@@ -1,0 +1,4 @@
+
+fm_shell -f ../scripts/pre_layout_check.tcl | tee ../results/post_check.log
+fm_shell -f ../scripts/post_layout_check.tcl | tee ../results/pre_check.log
+

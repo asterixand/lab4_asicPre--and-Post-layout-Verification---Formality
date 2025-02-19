@@ -1,0 +1,181 @@
+
+                                 Formality (R)
+
+               Version N-2017.09-SP2 for linux64 - Nov 16, 2017 
+
+                    Copyright (c) 1988 - 2017 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+  ** Highlights of Formality (R) Version N-2017.09 **
+   - Improved usability for automated deployment of alternate verification strategies
+   - New analyze_cone command for resolution of inconclusive compare points
+   - Enhanced UPF support
+
+   * Please refer to the Formality Release Notes for details and additional enhancements
+
+Build: 4755953
+Hostname: maxwell_13
+Current time: Mon Aug 13 07:32:45 2018
+
+Loading db file '/remote/apps/synopsys/fm/N-2017.09-SP2/libraries/syn/gtech.db'
+set_svf -append { ../source/default.svf } 
+SVF appended with '../source/default.svf'.
+1
+read_verilog -container r -libname WORK -01 { ../source/johnson_dft.v } 
+Loading verilog file '/VIM/Courses/synopsys_df/snps_design_flow_tutorial/lab05_formality/source/johnson_dft.v'
+Current container set to 'r'
+1
+set_top r:/WORK/johnson 
+Setting top design to 'r:/WORK/johnson'
+Status:   Elaborating design johnson   ...  
+Status:  Implementing inferred operators...
+Top design successfully set to 'r:/WORK/johnson'
+Reference design set to 'r:/WORK/johnson'
+1
+read_db -container i { ../ref/db_nldm/saed14rvt_tt0p8v25c.db  } 
+Loading db file '/VIM/Courses/synopsys_df/snps_design_flow_tutorial/lab05_formality/ref/db_nldm/saed14rvt_tt0p8v25c.db'
+Current container set to 'i'
+1
+read_verilog -container i -libname WORK -01 { ../source/johnson_dft_compiled.v } 
+Loading verilog file '/VIM/Courses/synopsys_df/snps_design_flow_tutorial/lab05_formality/source/johnson_dft_compiled.v'
+1
+set_top i:/WORK/johnson
+Setting top design to 'i:/WORK/johnson'
+Status:  Implementing inferred operators...
+
+************ Library Checking Summary ************
+Warning:  62 unlinked power cell(s) with unread pg pins.
+Warning:  845 unlinked power cell(s) with no power down functions on outputs.
+Warning:  2 unlinked power cell(s) with unread backup pg pins.
+Warning:  238 unlinked power cell(s) with no power down function on an ff or latch.
+        Use 'report_libraries -defects all' for more details.
+**************************************************
+
+Top design successfully set to 'i:/WORK/johnson'
+Implementation design set to 'i:/WORK/johnson'
+1
+set_constant -type port r:/WORK/johnson/SE 0
+Set 'r:/WORK/johnson/SE' to constant 0
+1
+set_constant -type port r:/WORK/johnson/r 0 
+Set 'r:/WORK/johnson/r' to constant 0
+1
+set_constant -type port i:/WORK/johnson/SE 0
+Set 'i:/WORK/johnson/SE' to constant 0
+1
+set_constant -type port i:/WORK/johnson/r 0 
+Set 'i:/WORK/johnson/r' to constant 0
+1
+match 
+Reference design is 'r:/WORK/johnson'
+Implementation design is 'i:/WORK/johnson'
+Status:  Checking designs...
+    Warning: 1 (0) undriven nets found in reference (implementation) design; see formality.log for list (FM-399)
+Status:  Building verification models...
+Status:  Processing Guide Commands...
+
+***************************** Guidance Summary *****************************
+                                         Status
+Command                 Accepted   Rejected  Unsupported  Unprocessed  Total
+----------------------------------------------------------------------------
+change_names        :          1          0          0          0          1
+environment         :          4          0          0          0          4
+scan_input          :          0          1          0          0          1
+
+Note: If verification succeeds you can safely ignore unaccepted guidance commands.
+
+SVF files read:
+      ../source/default.svf
+
+SVF files produced:
+  /VIM/Courses/synopsys_df/snps_design_flow_tutorial/lab05_formality/work/formality_svf/
+    svf.txt
+****************************************************************************
+
+Status:  Matching...
+    
+*********************************** Matching Results ***********************************    
+ 9 Compare points matched by name    
+ 0 Compare points matched by signature analysis    
+ 0 Compare points matched by topology    
+ 2 Matched primary inputs, black-box outputs    
+ 1(0) Unmatched reference(implementation) compare points    
+ 0(0) Unmatched reference(implementation) primary inputs, black-box outputs    
+----------------------------------------------------------------------------------------    
+Unmatched Objects                                                        REF        IMPL    
+----------------------------------------------------------------------------------------    
+ Cut-points (Cut)                                                          1           0    
+****************************************************************************************
+
+1
+#set_dont_verify_point -type port
+set_dont_verify_point -type port  r:/WORK/johnson/SE
+Set don't verify point 'r:/WORK/johnson/SE'
+1
+set_dont_verify_point -type port  r:/WORK/johnson/SCANOUTPORT
+Set don't verify point 'r:/WORK/johnson/SCANOUTPORT'
+1
+set_dont_verify_point -type port  r:/WORK/johnson/SCANINPORT
+Set don't verify point 'r:/WORK/johnson/SCANINPORT'
+1
+set_dont_verify_point -type port  i:/WORK/johnson/SE
+Set don't verify point 'i:/WORK/johnson/SE'
+1
+set_dont_verify_point -type port  i:/WORK/johnson/SCANOUTPORT
+Set don't verify point 'i:/WORK/johnson/SCANOUTPORT'
+1
+set_dont_verify_point -type port  i:/WORK/johnson/SCANINPORT
+Set don't verify point 'i:/WORK/johnson/SCANINPORT'
+1
+verify 
+Reference design is 'r:/WORK/johnson'
+Implementation design is 'i:/WORK/johnson'
+Status:  Matching...
+    
+*********************************** Matching Results ***********************************    
+ 8 Compare points matched by name    
+ 0 Compare points matched by signature analysis    
+ 0 Compare points matched by topology    
+ 2 Matched primary inputs, black-box outputs    
+ 1(0) Unmatched reference(implementation) compare points    
+ 0(0) Unmatched reference(implementation) primary inputs, black-box outputs    
+----------------------------------------------------------------------------------------    
+Unmatched Objects                                                        REF        IMPL    
+----------------------------------------------------------------------------------------    
+ Cut-points (Cut)                                                          1           0    
+****************************************************************************************
+
+Status:  Verifying...
+
+********************************* Verification Results *********************************
+Verification SUCCEEDED
+----------------------
+ Reference design: r:/WORK/johnson
+ Implementation design: i:/WORK/johnson
+ 8 Passing compare points
+----------------------------------------------------------------------------------------
+Matched Compare Points     BBPin    Loop   BBNet     Cut    Port     DFF     LAT   TOTAL
+----------------------------------------------------------------------------------------
+Passing (equivalent)           0       0       0       0       8       0       0       8
+Failing (not equivalent)       0       0       0       0       0       0       0       0
+Not Compared
+  Constant reg                                                         8       0       8
+  Don't verify                 0       0       0       0       1       0       0       1
+****************************************************************************************
+1
+save_session -replace ../results/design_pre
+Info:  Session being saved in minimal format.
+Info:  Session containers saved as read-only.
+Info:  Wrote file '../results/design_pre.fss'.
+1
+exit
+
+Maximum memory usage for this session: 526 MB
+CPU usage for this session: 2.01 seconds ( 0.00 hours )
+Current time: Mon Aug 13 07:32:47 2018
+Elapsed time: 2 seconds ( 0.00 hours )
+
+Thank you for using Formality (R)!
